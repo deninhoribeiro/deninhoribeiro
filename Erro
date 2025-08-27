@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Comparador de Horários de Jogos</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<style>
+  body{font-family:Arial,Helvetica,sans-serif;background:#f7f7f9;margin:0;padding:24px;color:#222}
+  h1{font-size:20px;margin:0 0 12px}
+  .card{background:#fff;border:1px solid #e5e7eb;border-radius:10px;padding:16px;margin-bottom:16px}
+  .row{display:flex;gap:12px;flex-wrap:wrap}
+  .col{flex:1 1 320px;min-width:280px}
+  label{font-weight:600;display:block;margin-bottom:4px}
+  input[type="text"],textarea{width:100%;padding:10px;border:1px solid #cbd5e1;border-radius:8px;font-size:14px}
+  textarea{min-height:120px}
+  .btn{cursor:pointer;border:0;border-radius:8px;padding:10px 14px;font-weight:600}
+  .btn-primary{background:#2563eb;color:#fff}
+  .btn-secondary{background:#f1f5f9}
+  .btn:disabled{opacity:.6;cursor:not-allowed}
+  table{width:100%;border-collapse:collapse;background:#fff}
+  th,td{border:1px solid #e5e7eb;padding:8px;text-align:left;font-size:14px;vertical-align:top}
+  th{background:#f8fafc;position:sticky;top:0;z-index:1}
+  .match{background:#e6f7ea}
+  .mismatch{background:#ffecec}
+  .badge{display:inline-block;border-radius:999px;padding:2px 8px;font-size:12px}
+  .ok{background:#10b981;color:#fff}
+  .diff{background:#f59e0b;color:#fff}
+  .muted{color:#64748b;font-size:12px}
+  .small{font-size:12px}
+</style>
+<!-- pdf.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.14.305/pdf.min.js"></script>
+</head>
+<body>
+
+<h1>⚽ Comparador de Horários de Jogos</h1>
+<p class="muted">Use links (se o site permitir) ou cole o HTML nos fallbacks. Você também pode anexar um PDF com jogos do dia.</p>
+
+<div class="card">
+  <div class="row">
+    <div class="col">
+      <label>Link do Site 1</label>
+      <input id="url1" type="text" placeholder="Ex.: https://www.flashscore.com/...">
+      <label class="small">HTML (fallback se o link bloquear)</label>
+      <textarea id="html1" placeholder="Cole o HTML do site 1 aqui, se necessário"></textarea>
+    </div>
+    <div class="col">
+      <label>Link do Site 2</label>
+      <input id="url2" type="text" placeholder="Ex.: https://...">
+      <label class="small">HTML (fallback se o link bloquear)</label>
+      <textarea id="html2" placeholder="Cole o HTML do site 2 aqui, se necessário"></textarea>
+    </div>
+    <div class="col">
+      <label>PDF (jogos do dia – ex.: REALLBETS)</label>
+      <input id="pdf" type="file" accept="application/pdf">
+      <div class="small muted" style="margin-top:6px">
+        Padrões aceitos no PDF: <code>TimeA x TimeB dd/mm hh:mm</code><br>
+        Ex.: <em>Flamengo x Vasco 27/08 21:30</em>
+      </div>
+    </div>
+  </div>
+  <div class="row" style="margin-top:12px">
+    <div class="col">
+      <label>Tolerância (min) para considerar “igual”</label>
+      <input id="tol" type="text" value="0" placeholder="0 = igualdade exata">
+    </div>
+    <div class="col">
+      <label>&nbsp;</label>
+      <div>
+        <button class="btn btn-primary" onclick="comparar()">🔍 Comparar</button>
+        <button class="btn btn-secondary" onclick="baixarCSV()">⬇️ Baixar CSV</button>
+      </div>
+    </div>
+  </div>
+  <div id="alert" class="small muted" style="margin-top:8px"></div>
+</div>
+
+<div class="card">
+  <div class="small muted" id="contagens"></div>
+  <div class="table-wrap" style="max-height:70vh;overflow:auto;margin-top:8px">
+    <table>
+      <thead>
+        <tr>
+          <th>Jogo</th>
+          <th>Horário Site 1</th>
+          <th>Horário Site 2</th>
+          <th>Horário PDF</th>
+          <th>Status</th>
+          <th>FlashScore</th>
+        </tr>
+      </thead>
+      <tbody id="tbody"></tbody>
+    </table>
+  </div>
+</div>
+
+<script>
+// === Utilidades ===
+function msg(s){ document.getElementById('alert').textContent = s; }
+function normTeam(s){
+  return (s||"").toLowerCase()
+    .normalize('NFD').replace(/[\u0300-\u036f]/g,'')
+    .replace(/\b(fc|sc|afc|cf|ac)\b/g,'')
+    .replace(/[^a-z0-9 ]+/g,' ')
+    .replace(/\s+/g,' ').trim();
+}
+function keyFromMatch(jogo){
+  // "Time A x Time B" -> chave normalizada
+  const parts = (jogo||"").split(/x|vs|\-/i);
+  if(parts.length<2) return normTeam(jogo);
+  return normTeam(parts[0])+" vs "+normTeam(parts[1]);
+}
+function extractHHMM(s){
+  const m = (s||"").match(/(\d{1,2})[:h](\d{2})/i);
+  if(!m) return null;
+  let hh = parseInt(m[1],10), mm = parseInt(m[2],10);
+  if(hh<0||hh>23||mm<0||mm>59) return null;
+  return `${String(hh).padStart(2,'0')}:${String(mm).padStart(2,'0')}`;
+}
+function extractDDMM_HHMM(s){
+  const m = (s||"").match(/(\d{1,2})\/(\d{1,2})\s+(\d{1,2})[:h](\d{2})/);
+  if(!m) return null;
+  const d = String(parseInt(m[1],10)).padStart(2,'0');
+  const mo = String(parseInt(m[2],10)).padStart(2,'0');
+  const hh = String(parseInt(m[3],10)).padStart(2,'0');
+  const mm = String(parseInt(m[4],10)).padStart(2,'0');
+  return `${d}/${mo} ${hh}:${mm}`;
+}
+function toMinutes(hhmm){
+  if(!hhmm) return null;
+  const m = hhmm.match(/(\d{2}):(\d{2})/);
+  if(!m) return null;
+  return parseInt(m[1],10)*60 + parseInt(m[2],10);
+}
+function diffMinutes(a,b){
+  const am = toMinutes(extractHHMM(a)||a);
+  const bm = toMinutes(extractHHMM(b)||b);
+  if(am==null || bm==null) return null;
+  return bm - am; // b - a
+}
+function sim(a,b){
+  a = (a||"").toLowerCase(); b = (b||"").toLowerCase();
+  const L = Math.max(a.length,b.length); if(!L) return 1;
+  let eq=0; for(let i=0;i<Math.min(a.length,b.length);i++){ if(a[i]===b[i]) eq++; }
+  return eq / L;
+}
+function flashScoreLink(jogo){
+  const q = encodeURIComponent((jogo||"").replace(/\s+/g,' ').trim());
+  return `https://www.flashscore.com/search/?q=${q}`;
+}
+
+// === Extração de HTML (heurística simples) ===
+function extrairJogosHTML(html){
+  const parser = new DOMParser();
+  const doc = parser.parseFromString(html, "text/html");
+  const jogos = [];
+
+  // Heurística 1: <span>HH:MM</span> texto "Time A - Time B"
+  const spans = doc.querySelectorAll("span");
+  spans.forEach(span=>{
+    const horarioRaw = span.textContent.trim();
+    const hhmm = extractHHMM(horarioRaw);
+    const prox = span.nextSibling;
+    if(hhmm && prox && prox.nodeType === Node.TEXT_NODE){
+      const jogoTxt = prox.textContent.replace(/^\s*[-–—]\s*/,'').trim();
+      if(jogoTxt && /x|vs|-/i.test(jogoTxt)){
+        jogos.push({jogo:jogoTxt, horario: hhmm});
+      }
+    }
+  });
+
+  // Heurística 2: linhas com "Time A x Time B ... dd/mm hh:mm"
+  const bodyText = doc.body ? doc.body.innerText : "";
+  const r = /([A-Za-zÀ-ÿ0-9 .'()-]+)\s*(?:x|vs|-)\s*([A-Za-zÀ-ÿ0-9 .'()-]+)\s+(\d{1,2}\/\d{1,2}\s+\d{1,2}[:h]\d{2}|\d{1,2}[:h]\d{2})/gi;
+  let m;
+  while((m = r.exec(bodyText))!==null){
+    const jogo = `${m[1].trim()} x ${m[2].trim()}`;
+    const dh = m[3].replace('h',':');
+    const hhmm = extractHHMM(dh) || extractHHMM(extractDDMM_HHMM(dh));
+    if(jogo && hhmm) jogos.push({jogo, horario: hhmm});
+  }
+
+  // Normaliza por chave (Mandante vs Visitante)
+  const map = new Map();
+  for(const j of jogos){
+    const k = keyFromMatch(j.jogo);
+    if(!map.has(k)) map.set(k, j);
+  }
+  return Array.from(map.values());
+}
+
+// === Extração do PDF com pdf.js ===
+async function extrairJogosPDF(file){
+  const buf = await file.arrayBuffer();
+  const pdf = await pdfjsLib.getDocument({data: buf}).promise;
+  let txt = "";
+  for(let i=1;i<=pdf.numPages;i++){
+    const page = await pdf.getPage(i);
+    const tc = await page.getTextContent();
+    tc.items.forEach(t=>{ txt += t.str + " "; });
+  }
+  // Procurar "TimeA x TimeB dd/mm hh:mm" OU "TimeA x TimeB hh:mm"
+  const jogos = [];
+  const rgx = /([A-Za-zÀ-ÿ0-9 .'()-]+)\s*(?:x|vs|-)\s*([A-Za-zÀ-ÿ0-9 .'()-]+)\s+((?:\d{1,2}\/\d{1,2}\s+)?\d{1,2}[:h]\d{2})/gi;
+  let m;
+  while((m = rgx.exec(txt))!==null){
+    const jogo = `${m[1].trim()} x ${m[2].trim()}`;
+    const dh = m[3].replace('h',':');
+    const hhmm = extractHHMM(dh) || extractHHMM(extractDDMM_HHMM(dh));
+    if(jogo && hhmm) jogos.push({jogo, horario: hhmm});
+  }
+  // Unificar
+  const map = new Map();
+  for(const j of jogos){
+    const k = keyFromMatch(j.jogo);
+    if(!map.has(k)) map.set(k, j);
+  }
+  return Array.from(map.values());
+}
+
+// === Fetch com fallback ===
+async function pegarHTML(url){
+  if(!url) return "";
+  try{
+    const r = await fetch(url, {mode:"cors"});
+    if(!r.ok) throw new Error(r.status+" "+r.statusText);
+    return await r.text();
+  }catch(e){
+    return ""; // CORS ou erro → vazio; usuário usa fallback textarea
+  }
+}
+
+// === Comparação ===
+function melhorMatch(jogo, lista){
+  let best=null, score=-1;
+  for(const x of lista){
+    const s = sim(normTeam(jogo), normTeam(x.jogo));
+    if(s>score){ score=s; best=x; }
+  }
+  return {item:best, score};
+}
+
+function statusBadge(h1,h2,h3, tol){
+  // base: Site1 vs Site2/PDF; considera igualdade com tolerância
+  const d12 = diffMinutes(h1,h2);
+  const d13 = diffMinutes(h1,h3);
+  const ok12 = (d12===0) || (d12!=null && Math.abs(d12)<=tol);
+  const ok13 = (d13===0) || (d13!=null && Math.abs(d13)<=tol);
+  const ok = (h2?ok12:true) && (h3?ok13:true);
+  return ok ? '<span class="badge ok">OK</span>' : '<span class="badge diff">Difere</span>';
+}
+
+let ULTIMO = [];
+
+async function comparar(){
+  msg("Carregando/extrando dados...");
+  const url1 = document.getElementById('url1').value.trim();
+  const url2 = document.getElementById('url2').value.trim();
+  const html1Fallback = document.getElementById('html1').value.trim();
+  const html2Fallback = document.getElementById('html2').value.trim();
+  const pdfFile = document.getElementById('pdf').files[0];
+  const tol = parseInt(document.getElementById('tol').value||"0",10);
+
+  // Pega HTML dos links (se possível)
+  const [html1Remote, html2Remote] = await Promise.all([
+    pegarHTML(url1), pegarHTML(url2)
+  ]);
+  const html1 = html1Remote || html1Fallback;
+  const html2 = html2Remote || html2Fallback;
+
+  // Extrai listas
+  const [list1, list2] = [extrairJogosHTML(html1), extrairJogosHTML(html2)];
+  const listPDF = pdfFile ? await extrairJogosPDF(pdfFile) : [];
+
+  // Index por chave para juntar
+  const map1 = new Map(list1.map(j=>[keyFromMatch(j.jogo), j]));
+  const map2 = new Map(list2.map(j=>[keyFromMatch(j.jogo), j]));
+  const mapP = new Map(listPDF.map(j=>[keyFromMatch(j.jogo), j]));
+
+  // Universo de chaves
+  const keys = new Set([...map1.keys(), ...map2.keys(), ...mapP.keys()]);
+
+  const tbody = document.getElementById('tbody');
+  tbody.innerHTML = "";
+  const linhas = [];
+
+  for(const k of keys){
+    const base = map1.get(k);
+    let s2 = map2.get(k);
+    let sp = mapP.get(k);
+
+    // Se não achou por chave, tenta melhor similaridade
+    if(!s2 && base){ const mm = melhorMatch(base.jogo, list2); if(mm.score>0.6) s2 = mm.item; }
+    if(!sp && base){ const mm = melhorMatch(base.jogo, listPDF); if(mm.score>0.6) sp = mm.item; }
+
+    const jogo = base?.jogo || s2?.jogo || sp?.jogo || "(jogo não identificado)";
+    const h1 = base?.horario || "";
+    const h2 = s2?.horario || "";
+    const h3 = sp?.horario || "";
+
+    const ok = (h1 && h2 && h3 && statusBadge(h1,h2,h3,tol).includes('OK'));
+    const tr = document.createElement('tr');
+    tr.className = (h1 && h2 && h3)
+      ? ( (diffMinutes(h1,h2)===0 && diffMinutes(h1,h3)===0) ? 'match':'mismatch' )
+      : 'mismatch';
+
+    const linkFS = `<a href="${flashScoreLink(jogo)}" target="_blank">Ver no FlashScore</a>`;
+    tr.innerHTML = `
+      <td>${jogo}</td>
+      <td>${h1||'—'}</td>
+      <td>${h2||'—'}</td>
+      <td>${h3||'—'}</td>
+      <td>${statusBadge(h1,h2,h3,tol)}</td>
+      <td>${linkFS}</td>
+    `;
+    tbody.appendChild(tr);
+    linhas.push({jogo,h1,h2,h3});
+  }
+
+  ULTIMO = linhas;
+  document.getElementById('contagens').textContent =
+    `Site1: ${list1.length} | Site2: ${list2.length} | PDF: ${listPDF.length} | Jogos combinados: ${linhas.length}`;
+  msg("Pronto.");
+}
+
+function baixarCSV(){
+  if(!ULTIMO.length){ msg("Nada para exportar."); return; }
+  const linhas = [["Jogo","Horario_Site1","Horario_Site2","Horario_PDF","FlashScore"]];
+  for(const r of ULTIMO){
+    const fs = flashScoreLink(r.jogo);
+    linhas.push([r.jogo, r.h1||"", r.h2||"", r.h3||"", fs]);
+  }
+  const csv = linhas.map(row=>row.map(v=>`"${String(v).replace(/"/g,'""')}"`).join(";")).join("\n");
+  const blob = new Blob([csv], {type:"text/csv;charset=utf-8;"});
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  a.download = "comparacao_horarios.csv";
+  a.click();
+  setTimeout(()=>URL.revokeObjectURL(a.href), 1000);
+}
+</script>
+
+</body>
+</html>
