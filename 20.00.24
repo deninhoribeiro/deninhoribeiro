@@ -74,8 +74,24 @@ https://embed-fastly.wistia.com/deliveries/28a95c7dcc369745af64d967704883eeb48df
 
 #EXTM3U
  
-#EXTINF:-1 tvg-logo="https://upload.wikimedia.org/wikipedia/pt/0/09/Logotipo_da_TV_Globo_Internacional.png" group-title="CANAL ABERTO", SPORTV
-https://bal01.vivartec.com.br:8088/hls/livechannel5.m3u8
+#EXTINF:-1 tvg-logo="https://images.vexels.com/media/users/3/141231/isolated/preview/c59b6035d104844f7006c5d74f200be6-jogador-de-futebol-acertando-1.png" group-title="CANAL ABERTO", FUTEBOL AO VIVO1
+https://liveplay1.camel4.live/live/sd-6MvZ6Lt2fW4R79ikA3.m3u8?txSecret=baa7e3e1924e0098e90d209dd52c4897&txTime=69A0D1CA&lat=9000&auth=4d08af4563c1a0a726e14109003d0db6
+
+#EXTINF:-1 tvg-logo="https://images.vexels.com/media/users/3/141231/isolated/preview/c59b6035d104844f7006c5d74f200be6-jogador-de-futebol-acertando-1.png" group-title="CANAL ABERTO", FUTEBOL AO VIVO2
+https://liveplay1.camel4.live/live/sd-6MvZ6Lt2zq1Uyq48PH.m3u8?txSecret=ddeb76abccb9330a5adf0b235dcf4ec0&txTime=69A0D276&lat=9000&auth=4d08af4563c1a0a726e14109003d0db6
+
+#EXTINF:-1 tvg-logo="https://images.vexels.com/media/users/3/141231/isolated/preview/c59b6035d104844f7006c5d74f200be6-jogador-de-futebol-acertando-1.png" group-title="CANAL ABERTO", FUTEBOL AO VIVO3
+https://liveplay1.camel4.live/live/sd-6MvVd3WfzALJt95RvX.m3u8?txSecret=c41f02e16196e28ac18ec612d4ca2619&txTime=69A0D2B7&lat=9000&auth=4d08af4563c1a0a726e14109003d0db6
+
+#EXTINF:-1 tvg-logo="https://images.vexels.com/media/users/3/141231/isolated/preview/c59b6035d104844f7006c5d74f200be6-jogador-de-futebol-acertando-1.png" group-title="CANAL ABERTO", FUTEBOL AO VIVO4
+https://liveplay1.camel4.live/live/sd-6MvZ6LxTF9WoeJhgFh_md.m3u8?txSecret=6221097e72f79a27461109b19c23d55a&txTime=69A0D324&lat=9000&auth=4d08af4563c1a0a726e14109003d0db6
+
+
+#EXTINF:-1 tvg-logo="https://images.vexels.com/media/users/3/141231/isolated/preview/c59b6035d104844f7006c5d74f200be6-jogador-de-futebol-acertando-1.png" group-title="CANAL ABERTO", FUTEBOL AO VIVO5
+https://dlnmh9ip6v2xcxz.superbol.blog/sportv.m3u8
+
+#EXTINF:-1 tvg-logo="https://images.vexels.com/media/users/3/141231/isolated/preview/c59b6035d104844f7006c5d74f200be6-jogador-de-futebol-acertando-1.png" group-title="CANAL ABERTO", FUTEBOL AO VIVO6
+https://dlnmh9ip6v2xcxz.superbol.blog/pre1.m3u8
 
 #EXTINF:-1 tvg-logo="https://listaiptvbrasil.com/logo/sbt.png" group-title="CANAL ABERTO", Canal 28
 https://live-ftc-na-south-2.media.starott.com/clt2/va01/starplus/event/2024/02/16/Caracas_FC_vs_Portuguesa_20240216_1708117828026/cmaf-cenc-ctr-1832K/1832_complete.m3u8
