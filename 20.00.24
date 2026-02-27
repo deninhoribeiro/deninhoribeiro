@@ -74,37 +74,56 @@ https://embed-fastly.wistia.com/deliveries/28a95c7dcc369745af64d967704883eeb48df
 
 #EXTM3U
  
-#EXTINF:-1 tvg-logo="https://images.vexels.com/media/users/3/141231/isolated/preview/c59b6035d104844f7006c5d74f200be6-jogador-de-futebol-acertando-1.png" group-title="CANAL ABERTO", FUTEBOL AO VIVO1
-https://liveplay1.camel4.live/live/sd-6MvZ6Lt2fW4R79ikA3.m3u8?txSecret=baa7e3e1924e0098e90d209dd52c4897&txTime=69A0D1CA&lat=9000&auth=4d08af4563c1a0a726e14109003d0db6
-
-#EXTINF:-1 tvg-logo="https://images.vexels.com/media/users/3/141231/isolated/preview/c59b6035d104844f7006c5d74f200be6-jogador-de-futebol-acertando-1.png" group-title="CANAL ABERTO", FUTEBOL AO VIVO2
-https://liveplay1.camel4.live/live/sd-6MvZ6Lt2zq1Uyq48PH.m3u8?txSecret=ddeb76abccb9330a5adf0b235dcf4ec0&txTime=69A0D276&lat=9000&auth=4d08af4563c1a0a726e14109003d0db6
-
-#EXTINF:-1 tvg-logo="https://images.vexels.com/media/users/3/141231/isolated/preview/c59b6035d104844f7006c5d74f200be6-jogador-de-futebol-acertando-1.png" group-title="CANAL ABERTO", FUTEBOL AO VIVO3
-https://liveplay1.camel4.live/live/sd-6MvVd3WfzALJt95RvX.m3u8?txSecret=c41f02e16196e28ac18ec612d4ca2619&txTime=69A0D2B7&lat=9000&auth=4d08af4563c1a0a726e14109003d0db6
-
-#EXTINF:-1 tvg-logo="https://images.vexels.com/media/users/3/141231/isolated/preview/c59b6035d104844f7006c5d74f200be6-jogador-de-futebol-acertando-1.png" group-title="CANAL ABERTO", FUTEBOL AO VIVO4
-https://liveplay1.camel4.live/live/sd-6MvZ6LxTF9WoeJhgFh_md.m3u8?txSecret=6221097e72f79a27461109b19c23d55a&txTime=69A0D324&lat=9000&auth=4d08af4563c1a0a726e14109003d0db6
 
 
-#EXTINF:-1 tvg-logo="https://images.vexels.com/media/users/3/141231/isolated/preview/c59b6035d104844f7006c5d74f200be6-jogador-de-futebol-acertando-1.png" group-title="CANAL ABERTO", FUTEBOL AO VIVO5
-https://dlnmh9ip6v2xcxz.superbol.blog/sportv.m3u8
 
-#EXTINF:-1 tvg-logo="https://images.vexels.com/media/users/3/141231/isolated/preview/c59b6035d104844f7006c5d74f200be6-jogador-de-futebol-acertando-1.png" group-title="CANAL ABERTO", FUTEBOL AO VIVO6
-https://dlnmh9ip6v2xcxz.superbol.blog/pre1.m3u8
 
-#EXTINF:-1 tvg-logo="https://listaiptvbrasil.com/logo/sbt.png" group-title="CANAL ABERTO", Canal 28
-https://live-ftc-na-south-2.media.starott.com/clt2/va01/starplus/event/2024/02/16/Caracas_FC_vs_Portuguesa_20240216_1708117828026/cmaf-cenc-ctr-1832K/1832_complete.m3u8
 
- 
-#EXTINF:-1 tvg-logo="https://static.s123-cdn-static.com/uploads/4944768/800_604ecab14465b.png" group-title="CANAL ABERTO", Canal 19
-https://m110605-fcdn.mp.lura.live/live/ephemeral/Zr1lWVQco8BXJTY6SM58ercgR5xPdDvG/game06/228k/58CnIQ6hyfH/init-audio.mp4?Expires=1708145354&KeyName=cdnkey1&Signature=zNjrqgVWJRPt0dwt7sz9bnyuVfw
- 
-#EXTINF:-1 tvg-logo="http://tv.i.uol.com.br/album/2012/10/04/logomarca-da-redetv-1349389472901_300x300.jpg" group-title="CANAL ABERTO", canal uruguaiu
-https://live-ftc-na-south-2.media.starott.com/gru1/qb01/starplus/event/2024/02/16/Nacional_vs_River_Plate_U_20240216_1708119053065/cmaf-cenc-ctr-3500K/3500_complete.m3u8
 
-#EXTINF:-1 tvg-logo="https://listaiptvbrasil.com/logo/recordtv.png" group-title="CANAL ABERTO",Rstar 2
-https://live-ftc-sa-east-1.media.starott.com/gru1/qb01/starplus/event/2024/02/16/Nacional_vs_River_Plate_U_20240216_1708119053065/cmaf-cenc-ctr-7000K/7000_complete.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="BR | All Sportsⓧ HD" tvg-logo="http://xplatinmedia.com:8080/images/dd0adb2707019ec75c7ab58f6f9c0962.png" group-title="|BR| ESPORTES",BR | All Sportsⓧ HD
+http://xplatinmedia.com:8080/@JKDpros/2jLwS6gtxZ2a/7513
 
-#EXTINF:-1 tvg-logo="https://2.bp.blogspot.com/-zmgTsGONnTg/WStg-SB_KdI/AAAAAAAA6OE/u5ch05hPL8siOQqkKlCXw4RN4JyTqSntgCLcB/s1600/Multishow.jpg" group-title="CANAL ABERTO", futmax
-https://live-ftc-na-south-2.media.starott.com/clt2/va01/starplus/event/2024/02/16/Caracas_FC_vs_Portuguesa_20240216_1708117828026/cmaf-cenc-ctr-5600K/5600_complete.m3u8
+#EXTINF:-1 tvg-id="bandsports.br" tvg-name="BR | Band Sportsⓧ HD" tvg-logo="http://xplatinmedia.com:8080/images/c309fb7df2a608b6b36976d35bd14920.png" group-title="|BR| ESPORTES",BR | Band Sportsⓧ HD
+http://xplatinmedia.com:8080/@JKDpros/2jLwS6gtxZ2a/51745
+
+#EXTINF:-1 tvg-id="BandSaoPaulo.br" tvg-name="BR | Bandⓧ HD" tvg-logo="http://xplatinmedia.com:8080/images/574ff4699083ce51de0dabcfad5edc4c.png" group-title="|BR| VARIEDADES",BR | Bandⓧ HD
+http://xplatinmedia.com:8080/@JKDpros/2jLwS6gtxZ2a/51964
+
+#EXTINF:-1 tvg-id="combate.br" tvg-name="BR | Combateⓧ HD" tvg-logo="http://xplatinmedia.com:8080/images/3353303223750327ec2e6b8c18ed849f.png" group-title="|BR| ESPORTES",BR | Combateⓧ HD
+http://xplatinmedia.com:8080/@JKDpros/2jLwS6gtxZ2a/51758
+
+#EXTINF:-1 tvg-id="Conmeboltv1.br" tvg-name="BR | Conmebol 1ⓧ HD (Event Only)" tvg-logo="http://xplatinmedia.com:8080/images/222bac9d4e5ffa5b91b5a34a26b88543.png" group-title="|BR| ESPORTES",BR | Conmebol 1ⓧ HD (Event Only)
+http://xplatinmedia.com:8080/@JKDpros/2jLwS6gtxZ2a/51814
+
+#EXTINF:-1 tvg-id="Conmeboltv2.br" tvg-name="BR | Conmebol 2ⓧ HD (Event Only)" tvg-logo="http://xplatinmedia.com:8080/images/222bac9d4e5ffa5b91b5a34a26b88543.png" group-title="|BR| ESPORTES",BR | Conmebol 2ⓧ HD (Event Only)
+http://xplatinmedia.com:8080/@JKDpros/2jLwS6gtxZ2a/51813
+
+#EXTINF:-1 tvg-id="Conmeboltv3.br" tvg-name="BR | Conmebol 3ⓧ HD (Event Only)" tvg-logo="http://xplatinmedia.com:8080/images/222bac9d4e5ffa5b91b5a34a26b88543.png" group-title="|BR| ESPORTES",BR | Conmebol 3ⓧ HD (Event Only)
+http://xplatinmedia.com:8080/@JKDpros/2jLwS6gtxZ2a/51815
+
+#EXTINF:-1 tvg-id="Conmeboltv4.br" tvg-name="BR | Conmebol 4ⓧ FHD (Event Only)" tvg-logo="http://xplatinmedia.com:8080/images/222bac9d4e5ffa5b91b5a34a26b88543.png" group-title="|BR| ESPORTES",BR | Conmebol 4ⓧ FHD (Event Only)
+http://xplatinmedia.com:8080/@JKDpros/2jLwS6gtxZ2a/51811
+
+#EXTINF:-1 tvg-id="" tvg-name="BR | Copa Libertadoresⓧ HD (Event Only)" tvg-logo="http://xplatinmedia.com:8080/images/5fc26fb9a18273aaa56c560c481bdb40.png" group-title="|BR| ESPORTES",BR | Copa Libertadoresⓧ HD (Event Only)
+http://xplatinmedia.com:8080/@JKDpros/2jLwS6gtxZ2a/27856
+
+#EXTINF:-1 tvg-id="DAZN.br" tvg-name="BR | DAZN 1ⓧ HD (Event Only)" tvg-logo="http://xplatinmedia.com:8080/images/0115e0905eb6b032fc967949252e94d8.png" group-title="|BR| ESPORTES",BR | DAZN 1ⓧ HD (Event Only)
+http://xplatinmedia.com:8080/@JKDpros/2jLwS6gtxZ2a/51851
+#EXTINF:-1 tvg-id="DAZN.br" tvg-name="BR | DAZN 2ⓧ HD (Event Only)" tvg-logo="http://xplatinmedia.com:8080/images/debdd9fac1edc371aeef07032528ff08.png" group-title="|BR| ESPORTES",BR | DAZN 2ⓧ HD (Event Only)
+http://xplatinmedia.com:8080/@JKDpros/2jLwS6gtxZ2a/7682
+#EXTINF:-1 tvg-id="DAZN.br" tvg-name="BR | DAZN 3ⓧ HD (Event Only)" tvg-logo="http://xplatinmedia.com:8080/images/3bf7679ff6c87f2a63a43f3df3eea761.png" group-title="|BR| ESPORTES",BR | DAZN 3ⓧ HD (Event Only)
+http://xplatinmedia.com:8080/@JKDpros/2jLwS6gtxZ2a/51677
+#EXTINF:-1 tvg-id="DAZN.br" tvg-name="BR | DAZN 4ⓧ HD (Event Only)" tvg-logo="http://xplatinmedia.com:8080/images/f51eeae773cbd21aadf3943cdda83da3.png" group-title="|BR| ESPORTES",BR | DAZN 4ⓧ HD (Event Only)
+http://xplatinmedia.com:8080/@JKDpros/2jLwS6gtxZ2a/27858
+
+#EXTINF:-1 tvg-id="espn.br" tvg-name="BR | ESPN HD" tvg-logo="http://xplatinmedia.com:8080/images/aebb58082cd1a61b738749a16f754155.png" group-title="|BR| ESPORTES",BR | ESPN Brasilⓧ HD
+http://xplatinmedia.com:8080/@JKDpros/2jLwS6gtxZ2a/51807
+
+#EXTINF:-1 tvg-id="espn2.br" tvg-name="BR | ESPN 2ⓧ FHD" tvg-logo="http://xplatinmedia.com:8080/images/73ad38381e174ccf1d64eba155e8f0c7.png" group-title="|BR| ESPORTES",BR | ESPN 2ⓧ FHD
+http://xplatinmedia.com:8080/@JKDpros/2jLwS6gtxZ2a/51450
+
+#EXTINF:-1 tvg-id="espn2.br" tvg-name="BR | ESPN 3ⓧ HD" tvg-logo="http://xplatinmedia.com:8080/images/ceff54dafaf7adb6bd5cc41a45809a21.png" group-title="|BR| ESPORTES",BR | ESPN 3ⓧ HD
+http://xplatinmedia.com:8080/@JKDpros/2jLwS6gtxZ2a/51703
+
+#EXTINF:-1 tvg-id="foxsports.br" tvg-name="BR | ESPN 4ⓧ FHD" tvg-logo="http://xplatinmedia.com:8080/images/83f4b8453f02a11264c65d9098a4b570.png" group-title="|BR| ESPORTES",BR | ESPN 4ⓧ FHD
+http://xplatinmedia.com:8080/@JKDpros/2jLwS6gtxZ2a/51455
