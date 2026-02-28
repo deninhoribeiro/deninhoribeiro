@@ -87,6 +87,9 @@ http://vipketseyket.top:8080/VIP017741743173529373/aacb05f76c36/4854
 #EXTINF:-1 tvg-id="" tvg-name="BR: ESPN 2" tvg-logo="https://docdog.top/logo/countries/brazil/espn2.png" group-title="LAME | BRAZIL VIP",BR: ESPN 2
 http://vipketseyket.top:8080/VIP017741743173529373/aacb05f76c36/4855
 
+#EXTINF:-1 tvg-id="" tvg-name="BR: ESPN 2" tvg-logo="https://docdog.top/logo/countries/brazil/espn2.png" group-title="LAME | DENINHO TV": ESPN 4
+http://918197185.com/live/73a7cf26de18dd8959df6579be26fa73/67f84dc4c4ddae870be5/130913.m3u8
+
 #EXTINF:-1 tvg-id="" tvg-name="BR: FOX SPORTS 2" tvg-logo="https://docdog.top/logo/countries/brazil/foxsports3.png" group-title="LAME | BRAZIL VIP",BR: ESPN 5
 http://vipketseyket.top:8080/VIP017741743173529373/aacb05f76c36/4860
 
@@ -122,5 +125,7 @@ http://vipketseyket.top:8080/VIP017741743173529373/aacb05f76c36/4904
 #EXTINF:-1 tvg-id="" tvg-name="BR: TNT" tvg-logo="https://docdog.top/logo/countries/brazil/tnt.png" group-title="LAME | BRAZIL VIP",BR: TNT
 http://vipketseyket.top:8080/VIP017741743173529373/aacb05f76c36/4915
 
-#EXTINF:-1 tvg-id="" tvg-name="BR: TNT" tvg-logo="https://docdog.top/logo/countries/brazil/tnt.png" group-title="LAME | TESTE DO TS: BAND SPORT TS
-http://918197185.com/live/73a7cf26de18dd8959df6579be26fa73/67f84dc4c4ddae870be5/14364.ts
+#EXTINF:-1 tvg-id="" tvg-name="BR: TNT" tvg-logo="https://docdog.top/logo/countries/brazil/tnt.png" group-title="LAME | TESTE DO TS": BAND SPORT TS
+http://918197185.com/live/73a7cf26de18dd8959df6579be26fa73/67f84dc4c4ddae870be5/14364.m3u8
+
+
