@@ -74,8 +74,8 @@ https://embed-fastly.wistia.com/deliveries/28a95c7dcc369745af64d967704883eeb48df
 
 #EXTM3U
  
-
-
+#EXTINF:-1 tvg-id="" tvg-name="BR: ESPN" tvg-logo="https://docdog.top/logo/countries/brazil/espn.png" group-title="NOVO",BR: ESPN NOVO
+https://d1muf25xa03so8hp04.s27-usa-cloudfront-net.online/token/59b98b0a263636723ab3d7481125a0dc/espn.M3U8
 
 
 
