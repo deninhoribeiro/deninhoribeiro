@@ -186,36 +186,40 @@ http://api.unitp.top/rpapi.php?id=00c86959468303651e0f273634c19372&rp=/live/2977
 http://api.unitp.top/rpapi.php?id=00c86959468303651e0f273634c19372&rp=/live/297713138/654549498/202394.ts
 
 
-#EXTINF:-1 tvg-id="" tvg-name="BR: ESPN" tvg-logo="https://docdog.top/logo/countries/brazil/espn.png" group-title="UNITV PRO",BR: ESPN PREMIUM 4K
-http://918197185.com/live/199037c4fdf62c23072d4d9a9b11f093/e838a62028be7e01863e/131595.m3u8
+#EXTINF:-1 tvg-id="" tvg-name="BR: ESPN" tvg-logo="https://docdog.top/logo/countries/brazil/espn.png" group-title="UNITV PRO",BR: ESPN 4K
+https://falcon12.top/live/297713138/654549498/49.M3U8
 
+#EXTINF:-1 tvg-id="" tvg-name="BR: ESPN" tvg-logo="https://docdog.top/logo/countries/brazil/espn.png" group-title="UNITV PRO",BR: ESPN SD
+https://falcon12.top/live/297713138/654549498/50.M3U8
 
 #EXTINF:-1 tvg-id="" tvg-name="BR: ESPN" tvg-logo="https://docdog.top/logo/countries/brazil/espn2.png" group-title="UNITV PRO",BR: ESPN 2 HD
-http://api.unitp.top/rpapi.php?id=00c86959468303651e0f273634c19372&rp=/live/297713138/654549498/44.ts
+https://falcon12.top/live/297713138/654549498/43.M3U8
 
 #EXTINF:-1 tvg-id="" tvg-name="BR: ESPN" tvg-logo="https://docdog.top/logo/countries/brazil/espn3.png" group-title="UNITV PRO",BR: ESPN 3 HD
-http://api.unitp.top/rpapi.php?id=00c86959468303651e0f273634c19372&rp=/live/297713138/654549498/46.ts
+https://falcon12.top/live/297713138/654549498/46.M3U8
 
 
 #EXTINF:-1 tvg-id="" tvg-name="BR: ESPN" tvg-logo="https://docdog.top/logo/countries/brazil/espn4.png" group-title="UNITV PRO",BR: ESPN 4 HD
-http://api.unitp.top/rpapi.php?id=00c86959468303651e0f273634c19372&rp=/live/297713138/654549498/62.ts
+https://falcon12.top/live/297713138/654549498/61.M3U8
 
 
-#EXTINF:-1 tvg-id="" tvg-name="BR: ESPN" tvg-logo="https://docdog.top/logo/countries/brazil/espn4.png" group-title="UNITV PRO",BR: ESPN 4 4K
-http://api.unitp.top/rpapi.php?id=00c86959468303651e0f273634c19372&rp=/live/297713138/654549498/730.ts
+#EXTINF:-1 tvg-id="" tvg-name="BR: ESPN" tvg-logo="https://docdog.top/logo/countries/brazil/espn4.png" group-title="UNITV PRO",BR: ESPN 5
+https://falcon12.top/live/297713138/654549498/60.M3U8
+
+#EXTINF:-1 tvg-id="" tvg-name="BR: ESPN" tvg-logo="https://docdog.top/logo/countries/brazil/espn4.png" group-title="UNITV PRO",BR: ESPN 6
+https://falcon12.top/live/297713138/654549498/48.M3U8
 
 #EXTINF:-1 tvg-id="" tvg-name="BR: ESPN" tvg-logo="https://docdog.top/logo/countries/brazil/espn4.png" group-title="UNITV PRO",BR: TNT HD
 http://api.unitp.top/rpapi.php?id=00c86959468303651e0f273634c19372&rp=/live/297713138/654549498/177.ts
 
-#EXTINF:-1 tvg-id="" tvg-name="BR: ESPN" tvg-logo="https://docdog.top/logo/countries/brazil/espn4.png" group-title="UNITV PRO",BR: ESPN 4 UHD FALCON12
+#EXTINF:-1 tvg-id="" tvg-name="BR: ESPN" tvg-logo="https://docdog.top/logo/countries/brazil/espn4.png" group-title="UNITV PRO",BR: ESPN 4 HD top
 http://falcon12.top/live/297713138/654549498/730.ts
 
 #EXTINF:-1 tvg-id="" tvg-name="BR: ESPN" tvg-logo="https://docdog.top/logo/countries/brazil/espn4.png" group-title="UNITV PRO",BR: ESPN 4 m3U8
 http://918197185.com/live/12891b655ccbc9e632f120250417123521/ddba986ba7842e05faba/130913.m3u8
 
-
-
-
+#EXTINF:-1 tvg-id="" tvg-name="BR: ESPN" tvg-logo="https://docdog.top/logo/countries/brazil/espn4.png" group-title="UNITV PRO",BR: COMBATE
+https://falcon12.top/live/297713138/654549498/22.M3U8
 
 
 
